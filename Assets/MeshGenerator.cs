@@ -5,7 +5,8 @@ public class MeshGenerator : MonoBehaviour
     public int width;
     public int height;
     public float scale;
-
+    public float frequency;
+    public float amplitude;
     private void Start()
     {
         GenerateMesh();
@@ -21,13 +22,18 @@ public class MeshGenerator : MonoBehaviour
         Vector3[] vertices = new Vector3[(width + 1) * (height + 1)];
         int[] triangles = new int[width * height * 6];
 
+
+
+        Material material = GetComponent<Renderer>().material;
+        material.SetFloat("_Frequency", frequency);
+        material.SetFloat("_Amplitude", amplitude);
+
         // Generate vertices
         for (int z = 0, i = 0; z <= height; z++)
         {
             for (int x = 0; x <= width; x++)
             {
-                float y = Mathf.PerlinNoise(x * scale, z * scale);
-                vertices[i] = new Vector3(x, y, z);
+                vertices[i] = new Vector3(x, 0, z);
                 i++;
             }
         }

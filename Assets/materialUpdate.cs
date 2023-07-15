@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class materialUpdate : MonoBehaviour
+public class MaterialUpdate : MonoBehaviour
 {
-    public Material material;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-        float time = Time.time;
-        material.SetFloat("_Time",time);       
+        
     }
 }
