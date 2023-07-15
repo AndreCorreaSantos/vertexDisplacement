@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MeshGenerator : MonoBehaviour
 {
@@ -7,9 +9,14 @@ public class MeshGenerator : MonoBehaviour
     public float scale;
     public float frequency;
     public float amplitude;
+
+    public Slider amplitudeSlider;
+    public Slider frequencySlider;
+    
     private void Start()
     {
         GenerateMesh();
+        
     }
 
     private void GenerateMesh()
@@ -22,11 +29,6 @@ public class MeshGenerator : MonoBehaviour
         Vector3[] vertices = new Vector3[(width + 1) * (height + 1)];
         int[] triangles = new int[width * height * 6];
 
-
-
-        Material material = GetComponent<Renderer>().material;
-        material.SetFloat("_Frequency", frequency);
-        material.SetFloat("_Amplitude", amplitude);
 
         // Generate vertices
         for (int z = 0, i = 0; z <= height; z++)
@@ -61,6 +63,14 @@ public class MeshGenerator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
+    }
+    private void Update(){
+        Material material = GetComponent<Renderer>().material;
+        frequency = frequencySlider.value;
+        amplitude = amplitudeSlider.value;
+
+        material.SetFloat("_Frequency", frequency);
+        material.SetFloat("_Amplitude", amplitude);
     }
     
 }
