@@ -398,10 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa12beefb8cb3f46b0125dd642c2da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 100
-  scale: 2
-  frequency: 100
+  width: 200
+  height: 200
+  scale: 5
+  frequency: 50
   amplitude: 20
 --- !u!114 &1709200429
 MonoBehaviour:
